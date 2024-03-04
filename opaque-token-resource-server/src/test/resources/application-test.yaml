@@ -1,0 +1,15 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: http://localhost:8085/local/introspect
+          client-id: test
+          client-secret: secret
+
+server:
+  port: 8085
+
+logging:
+  level:
+    org.springframework.security: DEBUG
