@@ -26,7 +26,7 @@ class HelloApiEnd2EndTest {
                 .header("Authorization", "Bearer test")
                 .exchange()
                 .expectStatus().isOk()
-                .expectBody(String.class).isEqualTo("Hello test");
+                .expectBody(String.class).isEqualTo("Hello test-client");
     }
 
     @Test
