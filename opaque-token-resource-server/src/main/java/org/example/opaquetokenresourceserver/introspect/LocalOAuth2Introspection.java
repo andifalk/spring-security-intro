@@ -21,8 +21,7 @@ public class LocalOAuth2Introspection {
     @PostMapping(value = "/introspect", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public IntrospectionResult introspect(@AuthenticationPrincipal(errorOnInvalidType = true) User user, String token) {
 
-        LOG.info("Token {}", token);
-        LOG.info("User {}", user);
+        LOG.info("Calling local introspection endpoint with token={} and user={}", token, user);
 
         return new IntrospectionResult(true,
                 user.getUsername(), user.getUsername(), "openid profile email", user.getUsername(),
