@@ -1,0 +1,20 @@
+meta {
+  name: Introspection (Local)
+  type: http
+  seq: 1
+}
+
+post {
+  url: httP://localhost:8080/local/introspect
+  body: formUrlEncoded
+  auth: basic
+}
+
+auth:basic {
+  username: test-client
+  password: secret
+}
+
+body:form-urlencoded {
+  token: test
+}

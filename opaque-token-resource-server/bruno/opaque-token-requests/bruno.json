@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "opaque-token-requests",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
