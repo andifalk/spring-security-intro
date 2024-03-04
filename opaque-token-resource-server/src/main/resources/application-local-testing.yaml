@@ -4,8 +4,9 @@ spring:
       resourceserver:
         opaquetoken:
           introspection-uri: http://localhost:8080/local/introspect
-          client-id: test
+          client-id: test-client
           client-secret: secret
+
 logging:
   level:
     org.springframework.security: DEBUG

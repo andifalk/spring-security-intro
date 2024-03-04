@@ -16,10 +16,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class WebSecurityConfiguration {
 
     private final OAuth2ResourceServerProperties oAuth2ResourceServerProperties;
@@ -28,24 +27,36 @@ public class WebSecurityConfiguration {
         this.oAuth2ResourceServerProperties = oAuth2ResourceServerProperties;
     }
 
-    @Profile("local-testing")
+    /*
+    @Bean
     @Order(1)
+    public WebSecurityCustomizer ignoringCustomizer() {
+        return (web) -> web.ignoring()
+                .requestMatchers(
+                        "/local/*"
+                );
+    }*/
+
+    @Profile("local-testing")
+    @Order(2)
     @Bean
     public SecurityFilterChain localSecurity(HttpSecurity httpSecurity) throws Exception {
 
         return httpSecurity
-                .securityMatcher(new AntPathRequestMatcher("/local/**"))
+                .securityMatcher("/local/*")
                 .csrf((AbstractHttpConfigurer::disable))
                 .authorizeHttpRequests(
                         req -> req.anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults()).build();
+                .httpBasic(Customizer.withDefaults()).formLogin(AbstractHttpConfigurer::disable).build();
     }
 
     @Profile("local-testing")
     @Bean
     public UserDetailsService userDetailsService() {
-        return new InMemoryUserDetailsManager(User.builder().username("test").password(passwordEncoder().encode("secret")).roles("USER").build());
+        return new InMemoryUserDetailsManager(
+                User.builder().username("test-client").password(passwordEncoder().encode("secret")).roles("USER").build()
+        );
     }
 
     @Profile("local-testing")
@@ -54,7 +65,6 @@ public class WebSecurityConfiguration {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    @Order(2)
     @Bean
     public SecurityFilterChain apiSecurity(HttpSecurity httpSecurity) throws Exception {
 

@@ -4,8 +4,6 @@ spring:
       resourceserver:
         opaquetoken:
           introspection-uri: http://localhost:8085/local/introspect
-          client-id: test
-          client-secret: secret
 
 server:
   port: 8085

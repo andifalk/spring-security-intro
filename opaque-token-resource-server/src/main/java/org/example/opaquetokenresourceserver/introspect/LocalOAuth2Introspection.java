@@ -29,4 +29,17 @@ public class LocalOAuth2Introspection {
                 Instant.now().plus(Duration.ofHours(1)).getEpochSecond(),
                 Instant.now().getEpochSecond());
     }
+
+    /*
+    @PostMapping(value = "/introspect", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public IntrospectionResult introspect(String token) {
+
+        LOG.info("Calling local introspection endpoint with token={}", token);
+
+        return new IntrospectionResult(true,
+                "test", "test", "openid profile email", "test",
+                "myaudience", "http://localhost:8080",
+                Instant.now().plus(Duration.ofHours(1)).getEpochSecond(),
+                Instant.now().getEpochSecond());
+    }*/
 }
