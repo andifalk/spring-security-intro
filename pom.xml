@@ -67,5 +67,6 @@
 
   <modules>
     <module>opaque-token-resource-server</module>
+    <module>jwt-resource-server</module>
 </modules>
 </project>

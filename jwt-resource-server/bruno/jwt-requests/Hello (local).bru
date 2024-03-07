@@ -1,0 +1,15 @@
+meta {
+  name: Hello (local)
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/api/hello
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOlsiaGVsbG8tc2VydmljZSJdLCJzdWIiOiJqZG9lIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJpc3MiOiJ0ZXN0X2lzc3VlciIsIm5hbWUiOiJKb2huIERvZSIsImdyb3VwcyI6WyJ1c2VyIl0sInByZWZlcnJlZF91c2VybmFtZSI6IkpvaG4gRG9lIiwiZXhwIjoxNzA5ODAwMzg2LCJnaXZlbl9uYW1lIjoiSm9obiIsImZhbWlseV9uYW1lIjoiRG9lIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSJ9.AIPYARoKr1WD2UHwPMgdgt0CHyKcVjXZpRoL-8So7AY
+}

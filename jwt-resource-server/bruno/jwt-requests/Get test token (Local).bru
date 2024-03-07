@@ -1,0 +1,20 @@
+meta {
+  name: Get test token (Local)
+  type: http
+  seq: 1
+}
+
+get {
+  url: httP://localhost:8080/local/jwt
+  body: formUrlEncoded
+  auth: basic
+}
+
+auth:basic {
+  username: test-client
+  password: secret
+}
+
+body:form-urlencoded {
+  token: test
+}
